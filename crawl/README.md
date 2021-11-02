@@ -6,5 +6,5 @@ pip3 install lxml
 ```
 ## Run project
 ```bash
-scrapy crawl alonhadat -o output.json --set FEED_EXPORT_ENCODING=utf-8
+scrapy crawl alonhadat -o ../data/output.json --set FEED_EXPORT_ENCODING=utf-8
 ```
