@@ -12,7 +12,7 @@ class AlonhadatSpider(scrapy.Spider):
     def start_requests(self):
         # urls = ["https://alonhadat.com.vn/can-ban-nha.htm"]
 
-	pages = []
+        pages = []
         # pages = ['https://alonhadat.com.vn/can-ban-nha.htm']
         for i in range(1, 501):
             domain = 'https://alonhadat.com.vn/can-ban-nha/trang-{}.htm'.format(i)
