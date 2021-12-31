@@ -1,13 +1,14 @@
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_cors import CORS, cross_origin
 
 from data_function import DataFunction
 from models.data import Data
 
 app = Flask(__name__)
-api = Api(app)
+CORS(app)
 
 @app.route("/get-data")
+@cross_origin()
 def get_data():
     data_func = DataFunction()
     
