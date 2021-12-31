@@ -129,10 +129,13 @@ class DataFunction:
                 dict[key] += value
                 dict_cnt[key] += 1
 
-        result = {}
+        result = []
         for key in dict.keys(): 
-            result[key] = dict[key] / dict_cnt[key]
-        print(result)
+            item = []
+            item.append(key)
+            item.append(dict[key] / dict_cnt[key])
+            result.append(item)
+
         return result
 
     def get_mean_if_range(self, prop_target, prop_if, min_value, max_value):
