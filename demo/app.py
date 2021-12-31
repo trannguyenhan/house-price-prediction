@@ -1,4 +1,5 @@
-from flask import Flask
+import re
+from flask import Flask, request
 from flask_cors import CORS, cross_origin
 
 from data_function import DataFunction
@@ -58,7 +59,35 @@ def get_data():
 
 @app.route("/predict")
 def home():
-    print("Hello World")
+    try: 
+        area = request.form['area']
+        floor_number = request.form['floor_number']
+        bedroom_number = request.form['bedroom_number']
+        is_dinning_room = request.form['is_dinning_room']
+        is_kitchen = request.form['is_kitchen']
+        is_terrace = request.form['is_terrace']
+        is_car_park = request.form['is_car_park']
+        type = request.form['type']
+        direction = request.form['direction']
+        street_in_front_of_house = request.form['street_in_front_of_house']
+        width = request.form['width']
+        city = request.form['city']
+        district = request.form['district']
+    except: 
+        return {
+            "price": 0
+        }
+
+    price = predict(area, floor_number, bedroom_number, is_dinning_room, is_kitchen, is_terrace, 
+    is_car_park, type, direction, street_in_front_of_house, width, city, district)
+
+    return {
+        "price": price
+    }
+
+def predict(area, floor_number, bedroom_number, is_dinning_room, is_kitchen, is_terrace, 
+    is_car_park, type, direction, street_in_front_of_house, width, city, district):
+    return 1
 
 if __name__ == '__main__':
     app.run(debug=True)
