@@ -58,7 +58,7 @@ def get_data():
 
 @app.route("/predict")
 def home():
-    pass
+    print("Hello World")
 
 if __name__ == '__main__':
     app.run(debug=True)
