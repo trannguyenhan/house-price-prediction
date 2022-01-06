@@ -58,6 +58,7 @@ def get_data():
     }
 
 @app.route("/predict")
+@cross_origin()
 def home():
     try: 
         area = request.args['area']
