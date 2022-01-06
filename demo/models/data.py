@@ -12,7 +12,7 @@ class Data:
         direction,
         street_in_front_of_house,
         width,
-        height,
+        # height,
         city,
         district):
         
@@ -28,7 +28,7 @@ class Data:
         self.direction = direction
         self.street_in_front_of_house = street_in_front_of_house
         self.width = width
-        self.height = height
+        # self.height = height
         self.city = city
         self.district = district
     

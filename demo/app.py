@@ -60,19 +60,19 @@ def get_data():
 @app.route("/predict")
 def home():
     try: 
-        area = request.form['area']
-        floor_number = request.form['floor_number']
-        bedroom_number = request.form['bedroom_number']
-        is_dinning_room = request.form['is_dinning_room']
-        is_kitchen = request.form['is_kitchen']
-        is_terrace = request.form['is_terrace']
-        is_car_park = request.form['is_car_park']
-        type = request.form['type']
-        direction = request.form['direction']
-        street_in_front_of_house = request.form['street_in_front_of_house']
-        width = request.form['width']
-        city = request.form['city']
-        district = request.form['district']
+        area = request.args['area']
+        floor_number = request.args['floor_number']
+        bedroom_number = request.args['bedroom_number']
+        is_dinning_room = request.args['is_dinning_room']
+        is_kitchen = request.args['is_kitchen']
+        is_terrace = request.args['is_terrace']
+        is_car_park = request.args['is_car_park']
+        type = request.args['type']
+        direction = request.args['direction']
+        street_in_front_of_house = request.args['street_in_front_of_house']
+        width = request.args['width']
+        city = request.args['city']
+        district = request.args['district']
     except: 
         return {
             "price": 0

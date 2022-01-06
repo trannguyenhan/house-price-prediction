@@ -28,7 +28,7 @@ class DataFunction:
                 row[11],
                 row[12],
                 row[13],
-                row[14]
+                # row[14]
             )
 
             self._list_data.append(data)
@@ -48,9 +48,9 @@ class DataFunction:
             "direction": 9,
             "street_in_front_of_house": 10,
             "width": 11,
-            "height": 12,
-            "city": 13,
-            "district": 14
+            # "height": 12,
+            "city": 12,
+            "district": 13
         }
 
     def get_all(self):
