@@ -1,0 +1,29 @@
+.main{
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.lable{
+    color:dodgerblue;
+}
+
+.submit{
+    margin-left: 300px;
+}
+
+.h1 {
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    color:#1e90ff;
+}
+
+.p_cost {
+    color: red;
+}
+
+.div_p_cost{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
