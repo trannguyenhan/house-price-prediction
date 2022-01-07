@@ -68,7 +68,7 @@ def get_data():
 @cross_origin()
 def home():
     try:
-        area = request.args.get("area",  type=float)
+        area = request.args.get("area", type=float)
         floor_number = request.args.get("floor_number", type=int)
         bedroom_number = request.args.get("bedroom_number", type=int)
         is_dinning_room = request.args.get("is_dinning_room", type=int)
@@ -77,13 +77,15 @@ def home():
         is_car_park = request.args.get("is_car_park", type=int)
         rtype = request.args.get("type", type=int)
         direction = request.args.get("direction", type=str)
-        street_in_front_of_house = request.args.get("street_in_front_of_house", type=float)
+        street_in_front_of_house = request.args.get(
+            "street_in_front_of_house", type=float
+        )
         width = request.args.get("width", type=float)
         city = request.args.get("city", type=int)
         district = request.args.get("district", type=int)
     except:
         return {"price": 0}
-    
+
     price = predict(
         area,
         floor_number,
@@ -100,7 +102,7 @@ def home():
         district,
     )
 
-    return {"price": 1}
+    return {"price": price}
 
 
 def predict(
@@ -119,7 +121,6 @@ def predict(
     district,
 ):
 
-    print(floor_number)
     inp_dim = 21
     inp = np.zeros(inp_dim)
 
@@ -159,7 +160,10 @@ def predict(
     inp = np.reshape(inp, (1, inp_dim))
     pred = model.predict(inp)
 
-    return pred[0][0]
+    pred = np.round(pred[0][0], 2)
+    pred = str(pred)
+
+    return pred
 
 
 if __name__ == "__main__":
