@@ -100,7 +100,7 @@ def home():
         district,
     )
 
-    return {"price": 1}
+    return {"price": price}
 
 
 def predict(
