@@ -68,22 +68,22 @@ def get_data():
 @cross_origin()
 def home():
     try:
-        area = request.args["area"]
-        floor_number = request.args["floor_number"]
-        bedroom_number = request.args["bedroom_number"]
-        is_dinning_room = request.args["is_dinning_room"]
-        is_kitchen = request.args["is_kitchen"]
-        is_terrace = request.args["is_terrace"]
-        is_car_park = request.args["is_car_park"]
-        type = request.args["type"]
-        direction = request.args["direction"]
-        street_in_front_of_house = request.args["street_in_front_of_house"]
-        width = request.args["width"]
-        city = request.args["city"]
-        district = request.args["district"]
+        area = request.args.get("area",  type=float)
+        floor_number = request.args.get("floor_number", type=int)
+        bedroom_number = request.args.get("bedroom_number", type=int)
+        is_dinning_room = request.args.get("is_dinning_room", type=int)
+        is_kitchen = request.args.get("is_kitchen", type=int)
+        is_terrace = request.args.get("is_terrace", type=int)
+        is_car_park = request.args.get("is_car_park", type=int)
+        rtype = request.args.get("type", type=int)
+        direction = request.args.get("direction", type=str)
+        street_in_front_of_house = request.args.get("street_in_front_of_house", type=float)
+        width = request.args.get("width", type=float)
+        city = request.args.get("city", type=int)
+        district = request.args.get("district", type=int)
     except:
         return {"price": 0}
-
+    
     price = predict(
         area,
         floor_number,
@@ -92,7 +92,7 @@ def home():
         is_kitchen,
         is_terrace,
         is_car_park,
-        type,
+        rtype,
         direction,
         street_in_front_of_house,
         width,
@@ -100,7 +100,7 @@ def home():
         district,
     )
 
-    return {"price": price}
+    return {"price": 1}
 
 
 def predict(
@@ -111,7 +111,7 @@ def predict(
     is_kitchen,
     is_terrace,
     is_car_park,
-    type,
+    rtype,
     direction,
     street_in_front_of_house,
     width,
@@ -130,7 +130,7 @@ def predict(
     inp[4] = is_kitchen  # is kitchen
     inp[5] = is_terrace  # is terrace
     inp[6] = is_car_park  # is car park
-    inp[7] = type  # type
+    inp[7] = rtype  # type
     inp[8] = np.log(float(street_in_front_of_house) + 1)  # street in front of house
     inp[9] = np.log(float(width) + 1)  # width
     inp[10] = city  # city
