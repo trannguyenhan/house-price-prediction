@@ -232,10 +232,11 @@ export default function Predict() {
             <label className="col-sm-2 col-form-label">Diện tích</label>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
+                step="0.01"
                 placeholder={0}
                 className="form-control"
-                value={data.aera}
+                value={data.area}
                 onInput={(e) => setData({ ...data, area: e.target.value })}
               />
             </div>
@@ -245,7 +246,8 @@ export default function Predict() {
             <label className="col-sm-2 col-form-label">Chiều rộng</label>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
+                step="0.01"
                 placeholder={0}
                 className="form-control"
                 value={data.width}
@@ -260,7 +262,8 @@ export default function Predict() {
             </label>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
+                step="0.01"
                 placeholder={0}
                 className="form-control"
                 value={data.street_width}
@@ -275,7 +278,7 @@ export default function Predict() {
             <label className="col-sm-2 col-form-label">Số tầng</label>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 placeholder={0}
                 value={data.floor}
                 className="form-control"
@@ -288,7 +291,7 @@ export default function Predict() {
             <label className="col-sm-2 col-form-label">Só phòng ngủ</label>
             <div className="col-sm-10">
               <input
-                type="text"
+                type="number"
                 placeholder={0}
                 value={data.bedroom}
                 className="form-control"
