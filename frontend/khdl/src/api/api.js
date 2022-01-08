@@ -28,7 +28,7 @@ export async function getDataDashboard() {
 
 export async function predict(data) {
   return new Promise(async resolve => {
-   let str = `?area=${data.aera}&floor_number=${data.floor}&bedroom_number=${data.bedroom}&is_dinning_room=${data.dinnging_room}&is_kitchen=${data.kitchen}&is_terrace=${data.terrace}&is_car_park=${data.car_park}&type=${data.type}&direction=${data.direction}&street_in_front_of_house=${data.street_width}&width=${data.width}&city=${data.city}&district=${data.district}`;
+   let str = `?area=${data.area}&floor_number=${data.floor}&bedroom_number=${data.bedroom}&is_dinning_room=${data.dinnging_room}&is_kitchen=${data.kitchen}&is_terrace=${data.terrace}&is_car_park=${data.car_park}&type=${data.type}&direction=${data.direction}&street_in_front_of_house=${data.street_width}&width=${data.width}&city=${data.city}&district=${data.district}`;
       const headers = {
           "Content-Type": "text/plain;charset=utf-8",
         };
