@@ -6,8 +6,7 @@ from tensorflow.python.keras.backend import arange
 from data_function import DataFunction
 from models.data import Data
 import numpy as np
-import math
-import json
+import joblib
 from tensorflow.keras.models import load_model
 
 app = Flask(__name__)
@@ -101,8 +100,9 @@ def home():
         width,
         city,
         district,
+        option,
     )
-    
+
     return {"price": price}
 
 
@@ -120,12 +120,13 @@ def predict(
     width,
     city,
     district,
+    option,
 ):
 
     inp_dim = 21
     inp = np.zeros(inp_dim)
 
-    # inp[0] = np.log(np.float(area) + 1)  # area
+    inp[0] = np.log(np.float(area) + 1)  # area
     inp[1] = np.log(float(floor_number) + 1)  # floor number
     inp[2] = np.log(float(bedroom_number) + 1)  # bedroom number
     inp[3] = is_dinning_room  # is dinning room
@@ -157,11 +158,17 @@ def predict(
     elif direction == "Đông Nam":
         inp[20] = 1
 
-    model = load_model("../src/Model/mlp.h5")
+    model = 0
+    if option == 0:
+        model = load_model("../src/Model/mlp.h5")
+    else:
+        model = joblib.load("../src/Model/xgboost.pkl")
+
     inp = np.reshape(inp, (1, inp_dim))
     pred = model.predict(inp)
 
-    pred = np.round(pred[0][0], 2)
+    pred = pred.flatten()
+    pred = np.round(pred[0], 2)
     pred = str(pred)
 
     return pred
