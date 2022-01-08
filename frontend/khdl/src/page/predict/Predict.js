@@ -50,6 +50,15 @@ const terrace = [
   },
 ];
 
+const algorithm = [{
+  label: "MLP",
+  value: 0,
+},
+{
+  label: "XGBoots",
+  value: 1,
+},];
+
 const tfdata = [
   {
     label: "Không",
@@ -119,6 +128,7 @@ export default function Predict() {
     dinnging_room: 2,
     car_park: 2,
     terrace: 2,
+    algorithm: 0,
   };
 
   const [data, setData] = useState(dataTemplate);
@@ -156,6 +166,10 @@ export default function Predict() {
     setData({ ...data, terrace: event.target.value });
   };
 
+  const changeAlgorithm = (event) => {
+    setData({ ...data, algorithm: event.target.value });
+  };
+  
   const submitPress = (event) => {
     //alert(JSON.stringify(data));
     predict(data).then(res => setCost(res.data.price));
@@ -354,6 +368,20 @@ export default function Predict() {
                 className="form-select"
               >
                 {tfdata.map((option) => (
+                  <option value={option.value}>{option.label}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <div className="form-group row">
+            <label className="col-sm-2 col-form-label">Thuật toán</label>
+            <div className="col-sm-10">
+              <select
+                onChange={changeAlgorithm}
+                value={data.algorithm}
+                className="form-select"
+              >
+                {algorithm.map((option) => (
                   <option value={option.value}>{option.label}</option>
                 ))}
               </select>
