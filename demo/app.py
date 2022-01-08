@@ -81,6 +81,7 @@ def home():
         width = request.args.get("width", type=float)
         city = request.args.get("city", type=int)
         district = request.args.get("district", type=int)
+        option = request.args.get("option", type=int)
     except:
         return {"price": 0}
     
@@ -99,7 +100,7 @@ def home():
         city,
         district,
     )
-
+    
     return {"price": price}
 
 
